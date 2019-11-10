@@ -1,11 +1,9 @@
 package _03_jeopardy;
 
-
 /*
  *    Copyright (c) The League of Amazing Programmers 2013-2019
  *    Level 1
  */
-
 
 import java.applet.AudioClip;
 import java.awt.BorderLayout;
@@ -17,7 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
-
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -27,7 +24,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 
 /* Check out the Jeopardy Handout to see what the end result should look like: http://bit.ly/1bvnvd4 */
 
@@ -41,8 +37,6 @@ public class Jeopardy implements ActionListener {
 	private int buttonCount = 0;
 	private AudioClip sound;
 
-
-
 	public void run() {
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -50,8 +44,15 @@ public class Jeopardy implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		quizPanel = new JPanel();
 		frame.setLayout(new BorderLayout());
-		JPanel panel = createHeader("Video Games");
-          quizPanel.addpanel();
+		JPanel panel = createHeader("Video games");
+		quizPanel.add(panel);
+		frame.add(quizPanel);
+	firstButton = 	createButton("$100");
+	secondButton = 	createButton("$200");
+		quizPanel.add(firstButton);
+		quizPanel.add(secondButton);
+		firstButton.addActionListener(this);
+		secondButton.addActionListener(this);
 		// 1. Make the frame show up
 
 		// 2. Give your frame a title
@@ -66,7 +67,8 @@ public class Jeopardy implements ActionListener {
 
 		// 7. Add the firstButton to the quizPanel
 
-		// 8. Write the code to complete the createButton() method below. Check that your
+		// 8. Write the code to complete the createButton() method below. Check that
+		// your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 
 		// 9. Use the secondButton variable to hold a button using the createButton
@@ -79,12 +81,11 @@ public class Jeopardy implements ActionListener {
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
-		
-		 /*
+
+		/*
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
-		 */		
-		
+		 */
 		frame.pack();
 		quizPanel.setLayout(new GridLayout(buttonCount + 1, 3));
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
@@ -92,60 +93,78 @@ public class Jeopardy implements ActionListener {
 				Toolkit.getDefaultToolkit().getScreenSize().width);
 	}
 
-
 	private JButton createButton(String dollarAmount) {
-		
+
 		// Create a new JButton
-
+            JButton button = new JButton();
 		// Set the text of the button to the dollarAmount
-
+              button.setText(dollarAmount);
+              
+              
 		// Increment the buttonCount (this should make the layout vertical)
-
+                  buttonCount +=1;
 		// Return your new button instead of the temporary button
-
-		return new JButton("temporary button");
+               return button;
+	
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		// Remove this temporary message after testing:
 		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-
-			// Call the askQuestion() method
- 
-		// Complete the code in the askQuestion() method. When you play the game, the score should change.
+                 if(buttonPressed == firstButton) {
+                	 askQuestion("What is the capitol of America","none", 100 );
+                 }
+		// Call the askQuestion() method
+              
+		// Complete the code in the askQuestion() method. When you play the game, the
+		// score should change.
 
 		// If the buttonPressed was the secondButton
+                  if(buttonPressed == secondButton) {
+                	  askQuestion("What is the")
+                  }
+		// Call the askQuestion() method with a harder question
 
-			// Call the askQuestion() method with a harder question
-
-		// Clear the text on the button that was pressed (set the button text to nothing)
+		// Clear the text on the button that was pressed (set the button text to
+		// nothing)
 
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
-		
-		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		
-		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
-		
-		// Stop the theme music when they have entered their response. Hint: use the sound variable 
-		
+
+		// Use the playJeopardyTheme() method to play music while the use thinks of an
+		// answer
+             playJeopardyTheme();
+		// Remove this temporary message and replace it with a pop-up that asks the user
+		// the question
+	String answer =	JOptionPane.showInputDialog(question);
+		// Stop the theme music when they have entered their response. Hint: use the
+		// sound variable
+                sound.stop();
 		// If the answer is correct
+               if(answer.equalsIgnoreCase(correctAnswer)) {
+            	   score += prizeMoney;
+            	   JOptionPane.showMessageDialog(null,"You're not braindead! Hooray!");
+               }
+               else {
+            	   score -= prizeMoney;
+            	   JOptionPane.showMessageDialog(null,"You don't know left from right, you boomboolie!");
+               }
+               updateScore();
+		// Increase the score by the prizeMoney
 
-			// Increase the score by the prizeMoney
-
-			// Pop up a message to tell the user they were correct
+		// Pop up a message to tell the user they were correct
 
 		// Otherwise
 
-			// Decrement the score by the prizeMoney
+		// Decrement the score by the prizeMoney
 
-			// Pop up a message to tell the user they were wrong and give them the correct answer
+		// Pop up a message to tell the user they were wrong and give them the correct
+		// answer
 
 		// Call the updateScore() method
 
