@@ -52,7 +52,7 @@ JFrame frame;
 		// 16. If the keyCode matches the imageIndex and "Simon says"
                if(keyCode == imageIndex && simonSays == true) {
             	   points+=1;
-            	   speak("You are Correct, you fluffrewwwdvgfseruckle");
+            	   speak("You are Correct, you big fatty aner");
                }
 	
 		// 17. Increase the value of score
@@ -63,7 +63,7 @@ JFrame frame;
 		// say..."
             if(keyCode != imageIndex && simonSays == false ) {
             	points +=1;
-            	speak("You are correct, you cheat");
+            	speak("You are correct, you brandooooooooooooooooooon");
             }
             tries += 1;
             frame.dispose();

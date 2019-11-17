@@ -49,6 +49,9 @@ public class Jeopardy implements ActionListener {
 		frame.add(quizPanel);
 	firstButton = 	createButton("$100");
 	secondButton = 	createButton("$200");
+	thirdButton = createButton("$400");
+	thirdButton = createButton("$600");
+	thirdButton = createButton("$800");
 		quizPanel.add(firstButton);
 		quizPanel.add(secondButton);
 		firstButton.addActionListener(this);
@@ -117,6 +120,7 @@ public class Jeopardy implements ActionListener {
 		// If the buttonPressed was the firstButton
                  if(buttonPressed == firstButton) {
                 	 askQuestion("What is the capitol of America","none", 100 );
+                	 firstButton.setText("");
                  }
 		// Call the askQuestion() method
               
@@ -124,10 +128,7 @@ public class Jeopardy implements ActionListener {
 		// score should change.
 
 		// If the buttonPressed was the secondButton
-                  if(buttonPressed == secondButton) {
-                	  askQuestion("What is the")
-                  }
-		// Call the askQuestion() method with a harder question
+                		// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to
 		// nothing)
@@ -138,7 +139,9 @@ public class Jeopardy implements ActionListener {
 
 		// Use the playJeopardyTheme() method to play music while the use thinks of an
 		// answer
-             playJeopardyTheme();
+           
+			
+		  playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user
 		// the question
 	String answer =	JOptionPane.showInputDialog(question);
@@ -156,7 +159,7 @@ public class Jeopardy implements ActionListener {
                }
                updateScore();
 		// Increase the score by the prizeMoney
-
+        
 		// Pop up a message to tell the user they were correct
 
 		// Otherwise
