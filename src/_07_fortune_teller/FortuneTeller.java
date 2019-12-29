@@ -51,11 +51,12 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
-                
+              
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
-   		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
+   		  AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
    		 // 10. Play the sound
-
+                    sound.play();
+   		 
    		 // 11. Use the pause() method below to wait until your music has finished
               pause(3);
    		 // 12. Insert your completed Magic 8 ball code here
@@ -70,26 +71,26 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
             	                   JOptionPane.showInputDialog("Ask a question for the fortune teller(Only ask yes/no questions");
             		// 5. If the random number is 0
             	         if(bob == 0) {
-            	        	 JOptionPane.showInputDialog(null,"yes");
+            	        	 JOptionPane.showMessageDialog(null,"yes");
             	         }
             	         
             		// -- tell the user "Yes"
 
             		// 6. If the random number is 1
             	          if(bob == 1) {
-            	        	  JOptionPane.showInputDialog(null,"no");
+            	        	  JOptionPane.showMessageDialog(null,"no");
             	          }
             		// -- tell the user "No"
 
             		// 7. If the random number is 2
             	          if(bob == 2) {
-            	        	  JOptionPane.showInputDialog(null,"Maybe you should ask google?");
+            	        	  JOptionPane.showMessageDialog(null,"Maybe you should ask google?");
             	          }
             		// -- tell the user "Maybe you should ask Google?"
 
             		// 8. If the random number is 3
             	          if(bob == 3) {
-            	        	  JOptionPane.showInputDialog(null,"I don't answer such inappropriate questions!");
+            	        	  JOptionPane.showMessageDialog(null,"I don't answer such inappropriate questions!");
             	          }
    	 }
     }
