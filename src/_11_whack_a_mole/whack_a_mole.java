@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class whack_a_mole implements ActionListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-	
+	Random random = new Random();
 	
     
     
@@ -23,19 +23,6 @@ public class whack_a_mole implements ActionListener {
     int molesMissed = 0;
     Date TimeAtStart;
     
-	void run() {
-		TimeAtStart = new Date(); 
-		frame.add(panel);
-		GridLayout layout = new GridLayout(8, 3);
-		panel.setLayout(layout);
-		makeButtons();
-		Random random = new Random();
-		drawButtons(random.nextInt(24));
-		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-	}
-
 	void drawButtons(int randy) {
 		
    JButton button = (JButton) panel.getComponent(randy);
@@ -49,12 +36,20 @@ public class whack_a_mole implements ActionListener {
 	    }
 	}
 	void makeButtons() {
+		
+			 frame = new JFrame();
+			 panel = new JPanel();
+			frame.add(panel);
+			frame.setSize(500,500);
+			frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+			frame.setVisible(true);
+			
 		for (int i = 0; i < 24; i++) {
 			JButton button = new JButton();
 			button.addActionListener(this);
 			panel.add(button);
 		}
-		
+		drawButtons(random.nextInt(24));
 	}
 	private void endGame(Date timeAtStart, int molesWhacked) { 
 	    Date timeAtEnd = new Date();
@@ -62,6 +57,20 @@ public class whack_a_mole implements ActionListener {
 	            + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
 	                  + " moles per second.");
 	}
+	void run() {
+		TimeAtStart = new Date(); 
+		frame.add(panel);
+		GridLayout layout = new GridLayout(8, 3);
+		panel.setLayout(layout);
+		makeButtons();
+		
+		drawButtons(random.nextInt(24));
+		frame.setSize(500,500);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+
 	public static void main(String[] args) {
 
 		whack_a_mole bob = new whack_a_mole();
