@@ -1,3 +1,5 @@
+package _12_slot_machine;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +21,8 @@ public class slot_machine implements ActionListener {
 	JLabel cherry;
 	JLabel creeper;
 	JLabel johnCena;
-	int random = 3;
+	Random random = new Random();
+
 	GridLayout layout = new GridLayout(1, 4);
 
 	void run() {
@@ -27,25 +30,25 @@ public class slot_machine implements ActionListener {
 		frame.add(panel);
 		panel.setLayout(layout);
 		panel.add(spin);
-		
+       
 		spin.addActionListener(this);
 		frame.pack();
 		frame.setVisible(true);
-          
+
 		try {
-			
-			JLabel cherry = createLabelImage("slotMachine_cherry.jpg");
-			JLabel creeper = createLabelImage("slotMachine_creeper.jpeg");
-			JLabel johnCena = createLabelImage("slotMachine_JohnCena.jpg");
-                panel.add(cherry);
-                panel.add(creeper);
-                panel.add(johnCena);
+
+			 cherry = createLabelImage("slotMachine_cherry.jpg");
+			 creeper = createLabelImage("slotMachine_creeper.jpeg");
+			 johnCena = createLabelImage("slotMachine_JohnCena.jpg");
+			panel.add(cherry);
+			panel.add(creeper);
+			panel.add(johnCena);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-    
+
 	public static void main(String[] args) {
 		slot_machine slots = new slot_machine();
 		slots.run();
@@ -64,13 +67,44 @@ public class slot_machine implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource().equals(spin)) {
+			panel.removeAll();
+			panel.add(spin);
+			
+			for (int i = 0; i < 3; i++) {
+				JLabel label = new JLabel();
+				switch (random.nextInt(3)) {
+				case 0:
+					try {
+						label = createLabelImage("slotMachine_cherry.jpg");
+					} catch (MalformedURLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+                  panel.add(label);
+				case 1:
+					try {
+						label = createLabelImage("slotmachine_creeper.jpeg");
+					} catch (MalformedURLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+                  panel.add(label);
+				case 2:
+					try {
+						label = createLabelImage("slotmachine_JohnCena.jpg");
+					} catch (MalformedURLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					panel.add(label);
+				}
+
+			}
+			panel.repaint();
+		}
 		// TODO Auto-generated method stub
-               switch(random) {
-               case 1:
-            	   cherry.seti
-               case 2:
-            	   
-               case 3:
-               }
 	}
 }
