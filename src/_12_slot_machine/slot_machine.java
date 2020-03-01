@@ -69,8 +69,8 @@ public class slot_machine implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource().equals(spin)) {
-			panel.removeAll();
-			panel.add(spin);
+			//panel.removeAll();
+//			panel.add(spin);
 			
 			for (int i = 0; i < 3; i++) {
 				JLabel label = new JLabel();
@@ -83,7 +83,7 @@ public class slot_machine implements ActionListener {
 						e1.printStackTrace();
 					}
 					
-                  panel.add(label);
+                  
 				case 1:
 					try {
 						label = createLabelImage("slotmachine_creeper.jpeg");
@@ -91,7 +91,7 @@ public class slot_machine implements ActionListener {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}
-                  panel.add(label);
+                  
 				case 2:
 					try {
 						label = createLabelImage("slotmachine_JohnCena.jpg");
@@ -99,9 +99,10 @@ public class slot_machine implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					panel.add(label);
+					
 				}
 
+panel.add(label);
 			}
 			panel.repaint();
 		}

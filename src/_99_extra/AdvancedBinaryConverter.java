@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 public class AdvancedBinaryConverter implements ActionListener {
 	JFrame frame;
-	JPanel panel;
+	JPanel panel;	
 	JTextField hexResult;
 	JTextField decimalResult;
 	JTextField asciiResult;
@@ -27,7 +27,7 @@ public class AdvancedBinaryConverter implements ActionListener {
 
 	public void start() {
 		frame = new JFrame();
-		panel = new JPanel();
+		panel = new JPanel();		
 		panel.setLayout(new GridBagLayout());
 		hexResult = new JTextField(12);
 		decimalResult = new JTextField(12);
@@ -63,23 +63,30 @@ public class AdvancedBinaryConverter implements ActionListener {
 		        JLabel  decimal = new JLabel();
 		        decimal.setText("Decimal");
 		// 12. Add the label from step 11. to row 3, column 0 of the panel
-		          addObjectToPanel(decimal,3,0,)
+		          addObjectToPanel(decimal,3,0,3);
 		// 13. Add the decimalResult JTextField to the panel next to label from step 11.
-		
+		           panel.add(decimalResult);
 		// 14. Create a new JLabel with the text "Hexidecimal:"
-		
+		         JLabel hexidecimal = new JLabel();
+		         hexidecimal.setText("Hexidecimal");
 		// 15. Add the label from step 14. to row 4, column 0 of the panel
-		
+		         addObjectToPanel(hexidecimal,4,0,2);
 		// 16. Add the hexResult JTextField to the panel next to the label from step 14.
-		
+		             panel.add(hexResult);
 		// 17. Pack the frame
-	}
+		             frame.pack();
+	}        
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 
 		// 18. If convertButton was pressed...
-		
+		            if(e.getSource().equals(convertButton)) {
+		            	String text = inputTextField.getText();
+		            	String binary = binaryToAscii(text);
+		            	asciiResult.setText(binary);
+		            	
+		            }
 			// 19. Get the text from inputTextField and save it to a new String variable
 			
 			// 20. Call binaryToAscii() with the text from step 19 and save the result in a new String variable
