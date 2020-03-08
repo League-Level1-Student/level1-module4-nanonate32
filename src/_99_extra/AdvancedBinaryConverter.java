@@ -29,9 +29,9 @@ public class AdvancedBinaryConverter implements ActionListener {
 		frame = new JFrame();
 		panel = new JPanel();		
 		panel.setLayout(new GridBagLayout());
-		hexResult = new JTextField(12);
-		decimalResult = new JTextField(12);
-		asciiResult = new JTextField(12);
+		hexResult = new JTextField(20);
+		decimalResult = new JTextField(20);
+		asciiResult = new JTextField(20);
 		inputTextField = new JTextField(20);
 		convertButton = new JButton();
 
@@ -83,9 +83,12 @@ public class AdvancedBinaryConverter implements ActionListener {
 		// 18. If convertButton was pressed...
 		            if(e.getSource().equals(convertButton)) {
 		            	String text = inputTextField.getText();
-		            	String binary = binaryToAscii(text);
-		            	asciiResult.setText(binary);
-		            	
+		            	String ascii = binaryToAscii(text);
+		            	asciiResult.setText(ascii);
+		            	String decimal = binaryToInt(text);
+		            	decimalResult.setText(decimal);
+		            	String hex = binaryToHex(text);
+		            	hexResult.setText(hex);
 		            }
 			// 19. Get the text from inputTextField and save it to a new String variable
 			
